@@ -1,0 +1,15 @@
+{
+  "name": "rubiks-cube-js",
+  "version": "0.0.0",
+  "description": "Rubik's Cube Solver",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "Alan Raison",
+  "license": "GPLv3",
+  "devDependencies": {
+    "grunt": "~0.4.4"
+  }
+}
