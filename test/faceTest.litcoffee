@@ -1,4 +1,9 @@
-This is an example of using the assert chai interface
+Face Test
+=========
+
+This is an example of using chai's "assert" interface.
+
+Tests the `isEqualTo` and `isSolved` functions
 
     assert = require('chai').assert
     Face = require('../src/face.coffee')
