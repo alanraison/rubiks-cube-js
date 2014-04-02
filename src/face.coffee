@@ -1,4 +1,3 @@
-
 class Face
     constructor: (@nw, @n, @ne,
             @w, @c, @e,

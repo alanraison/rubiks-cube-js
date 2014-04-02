@@ -24,11 +24,29 @@ describe 'Cube', () ->
         )
 
     initial = new Cube(constantFace('b'),
-                constantFace('o'),
-                constantFace('w'),
-                constantFace('r'),
-                constantFace('y'),
-                constantFace('g'))
+        constantFace('o'),
+        constantFace('w'),
+        constantFace('r'),
+        constantFace('y'),
+        constantFace('g'))
+
+#    it 'equates equivalent cubes', () ->
+#        second = new Cube(constantFace 'b',
+#            constantFace 'o',
+#            constantFace 'w',
+#            constantFace 'r',
+#            constantFace 'y',
+#            constantFace 'g')
+#        initial.equalTo(second).should.be(true)
+#
+#    it 'does not equate different cubes', () ->
+#        second = new Cube(constantFace 'y',
+#            constantFace 'g',
+#            constantFace 'b',
+#            constantFace 'w',
+#            constantFace 'o',
+#            constantFace 'r')
+#        initial.equalTo(second).should.not.be(true)
 
     describe 'twisting blue face', () ->
         actual = initial.rotateBlueFace()

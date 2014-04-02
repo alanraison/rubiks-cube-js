@@ -4,7 +4,7 @@ module.exports = (chai, utils) ->
 
     Assertion.addMethod('faceLike', (expected) ->
         actual = this._obj
-        new Assertion(actual).to.be.instanceof(Face)
+        new Assertion(actual).to.be.instanceof(Face )
 
         this.assert(
             actual.isEqualTo expected,

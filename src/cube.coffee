@@ -19,19 +19,20 @@ class Cube
         @greenFace.print
 
     isSolved: () ->
-        @blueFace.solved? and
-        @orangeFace.solved? and
-        @whiteFace.solved? and
-        @redFace.solved? and
-        @yellowFace.solved? and
-        @greenFace.solved?
+        @blueFace.isSolved and
+        @orangeFace.isSolved and
+        @whiteFace.isSolved and
+        @redFace.isSolved and
+        @yellowFace.isSolved and
+        @greenFace.isSolved
+
     isEqualTo: (other) ->
-        @blueFace.equal? other.blueFace and
-        @orangeFace.equal? other.orangeFace and
-        @whiteFace.equal? other.whiteFace and
-        @redFace.equal? other.redFace and
-        @yellowFace.equal? other.yellowFace and
-        @greenFace.equal? other.greenFace
+        @blueFace.isEqualTo other.blueFace and
+        @orangeFace.isEqualTo other.orangeFace and
+        @whiteFace.isEqualTo other.whiteFace and
+        @redFace.isEqualTo other.redFace and
+        @yellowFace.isEqualTo other.yellowFace and
+        @greenFace.isEqualTo other.greenFace
 
     rotateNamedFace = (face) ->
         new Face(face.ne, face.e, face.se,
