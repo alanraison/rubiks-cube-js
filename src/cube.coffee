@@ -27,12 +27,12 @@ class Cube
         @greenFace.isSolved
 
     isEqualTo: (other) ->
-        @blueFace.isEqualTo other.blueFace and
-        @orangeFace.isEqualTo other.orangeFace and
-        @whiteFace.isEqualTo other.whiteFace and
-        @redFace.isEqualTo other.redFace and
-        @yellowFace.isEqualTo other.yellowFace and
-        @greenFace.isEqualTo other.greenFace
+        @blueFace.isEqualTo(other.blueFace) and
+        @orangeFace.isEqualTo(other.orangeFace) and
+        @whiteFace.isEqualTo(other.whiteFace) and
+        @redFace.isEqualTo(other.redFace) and
+        @yellowFace.isEqualTo(other.yellowFace) and
+        @greenFace.isEqualTo(other.greenFace)
 
     rotateNamedFace = (face) ->
         new Face(face.ne, face.e, face.se,

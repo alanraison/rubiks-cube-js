@@ -2,8 +2,6 @@ class Face
     constructor: (@nw, @n, @ne,
             @w, @c, @e,
             @sw, @s, @se) ->
-    print: () ->
-        "#{@nw} #{@n} #{@ne}\n#{@w} #{@c} #{e}\n#{@sw} #{@s} #{@se}"
     isSolved: () ->
         @nw is @c and
         @n is @c and

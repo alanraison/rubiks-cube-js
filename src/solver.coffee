@@ -1,4 +1,6 @@
-Cube = require('./cube.coffee')
+Cube = require './cube.coffee'
+#helpers = require './solverHelper.coffee'
+_ = require 'underscore'
 
 moves = {
     'b': (cube) -> cube.rotateBlueFace(),
@@ -15,12 +17,21 @@ moves = {
     'G': (cube) -> cube.rotateGreenFace().rotateGreenFace().rotateGreenFace()
 }
 
-solve = (cube) ->
-    tryMoves = (cube, moves, cubes) ->
-        Object.keys(moves(cube))
-    tryMoves(cube, [''], [cube]) unless (cube.isSolved)
-    'O'
+class Solver
+    constructor: (@allKnownCubes) ->
 
-module.exports = {
-    solve: solve
-}
+    haveNotSeen: (cube) ->
+        not _.some(@allKnownCubes, (c) -> c.isEqualTo(cube))
+
+    nextGeneration: (currentGeneration) ->
+        _.flatten(for path, cube of currentGeneration
+            _.flatten(for move, change of moves when this.haveNotSeen(newCube = change(cube))
+                ["#{path}#{move}", newCube]
+            )
+        )
+
+module.exports =
+    solve: (cube) ->
+        allKnownCubes = [cube]
+        'O'
+    Solver: Solver

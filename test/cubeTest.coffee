@@ -3,7 +3,7 @@ chai.should()
 faceAssertions = require('./helpers/cube.coffee')
 chai.use(faceAssertions)
 
-describe 'Cube', () ->
+describe.only 'Cube', () ->
     Cube = require '../src/cube.coffee'
     Face = require '../src/face.coffee'
 
@@ -30,23 +30,23 @@ describe 'Cube', () ->
         constantFace('y'),
         constantFace('g'))
 
-#    it 'equates equivalent cubes', () ->
-#        second = new Cube(constantFace 'b',
-#            constantFace 'o',
-#            constantFace 'w',
-#            constantFace 'r',
-#            constantFace 'y',
-#            constantFace 'g')
-#        initial.equalTo(second).should.be(true)
-#
-#    it 'does not equate different cubes', () ->
-#        second = new Cube(constantFace 'y',
-#            constantFace 'g',
-#            constantFace 'b',
-#            constantFace 'w',
-#            constantFace 'o',
-#            constantFace 'r')
-#        initial.equalTo(second).should.not.be(true)
+    it 'equates equivalent cubes', () ->
+        second = new Cube(constantFace('b'),
+            constantFace('o'),
+            constantFace('w'),
+            constantFace('r'),
+            constantFace('y'),
+            constantFace('g'))
+        initial.isEqualTo(second).should.be.true
+
+    it 'does not equate different cubes', () ->
+        second = new Cube(constantFace('y'),
+            constantFace('g'),
+            constantFace('b'),
+            constantFace('w'),
+            constantFace('o'),
+            constantFace('r'))
+        initial.isEqualTo(second).should.be.false
 
     describe 'twisting blue face', () ->
         actual = initial.rotateBlueFace()
