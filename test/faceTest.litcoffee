@@ -6,7 +6,7 @@ This is an example of using chai's "assert" interface.
 Tests the `isEqualTo` and `isSolved` functions
 
     assert = require('chai').assert
-    Face = require('../src/face.coffee')
+    Face = require('../src/models.coffee').face
 
     describe 'Face', () ->
         it 'should identify when a face has been solved', () ->

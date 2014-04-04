@@ -1,4 +1,4 @@
-Cube = require './cube.coffee'
+Cube = require('./models.coffee').cube
 #helpers = require './solverHelper.coffee'
 _ = require 'underscore'
 

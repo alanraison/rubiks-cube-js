@@ -1,6 +1,7 @@
 expect = require('chai').expect
-Face = require('../src/face.coffee')
-Cube = require('../src/cube.coffee')
+models = require('../src/models.coffee')
+Face = models.face
+Cube = models.cube
 solver = require('../src/solver.coffee')
 
 describe 'Cube solver', ->
@@ -40,4 +41,3 @@ describe 'Cube solver', ->
             next = theSolver.nextGeneration {"": problem}
             expect(next).to.be.an.instanceof(Array)
             #expect(next)
-            console.log(next)

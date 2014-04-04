@@ -1,4 +1,4 @@
-Face = require '../../src/face.coffee'
+Face = require('../../src/models.coffee').face
 module.exports = (chai, utils) ->
     Assertion = chai.Assertion
 

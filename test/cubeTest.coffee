@@ -4,8 +4,9 @@ faceAssertions = require('./helpers/cube.coffee')
 chai.use(faceAssertions)
 
 describe.only 'Cube', () ->
-    Cube = require '../src/cube.coffee'
-    Face = require '../src/face.coffee'
+    models = require '../src/models.coffee'
+    Cube = models.cube
+    Face = models.face
 
     constantFace = (c) ->
         new Face("#{c}nw","#{c}n","#{c}ne",
