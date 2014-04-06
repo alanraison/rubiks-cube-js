@@ -1,3 +1,4 @@
+"use strict"
 chai = require('chai')
 chai.should()
 faceAssertions = require('./helpers/cube.coffee')
@@ -48,6 +49,24 @@ describe.only 'Cube', () ->
             constantFace('o'),
             constantFace('r'))
         initial.isEqualTo(second).should.be.false
+
+    it 'identifies when a cube is solved', ->
+        solved = new Cube(new Face('b','b','b','b','b','b','b','b','b'),
+            new Face('o','o','o','o','o','o','o','o','o'),
+            new Face('w','w','w','w','w','w','w','w','w'),
+            new Face('r','r','r','r','r','r','r','r','r'),
+            new Face('y','y','y','y','y','y','y','y','y'),
+            new Face('g','g','g','g','g','g','g','g','g'))
+        solved.isSolved().should.be.true
+
+    it 'identifies when a cube is not solved', ->
+        unsolved = new Cube(new Face('a','a','a','a','b','a','a','a','a'),
+            new Face('o','o','o','o','o','o','o','o','o'),
+            new Face('w','w','w','w','w','w','w','w','w'),
+            new Face('r','r','r','r','r','r','r','r','r'),
+            new Face('y','y','y','y','y','y','y','y','y'),
+            new Face('g','g','g','g','g','g','g','g','g'))
+        unsolved.isSolved().should.be.false
 
     describe 'twisting blue face', () ->
         actual = initial.rotateBlueFace()

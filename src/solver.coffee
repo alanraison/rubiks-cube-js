@@ -1,5 +1,5 @@
+"use strict"
 Cube = require('./models.coffee').cube
-#helpers = require './solverHelper.coffee'
 _ = require 'underscore'
 
 moves = {
@@ -17,21 +17,22 @@ moves = {
     'G': (cube) -> cube.rotateGreenFace().rotateGreenFace().rotateGreenFace()
 }
 
-class Solver
-    constructor: (@allKnownCubes) ->
-
-    haveNotSeen: (cube) ->
-        not _.some(@allKnownCubes, (c) -> c.isEqualTo(cube))
-
-    nextGeneration: (currentGeneration) ->
-        _.flatten(for path, cube of currentGeneration
-            _.flatten(for move, change of moves when this.haveNotSeen(newCube = change(cube))
-                ["#{path}#{move}", newCube]
-            )
-        )
-
 module.exports =
     solve: (cube) ->
+        currentGeneration = {"": cube}
         allKnownCubes = [cube]
-        'O'
-    Solver: Solver
+        while (solution = _.find(_.pairs(currentGeneration), (x) -> x[1].isSolved())) is undefined
+            currentGeneration = this.nextGeneration(currentGeneration, allKnownCubes)
+            allKnownCubes = allKnownCubes.concat(_.values(currentGeneration))
+        solution[0]
+
+    haveSeen: (cube, allKnownCubes) ->
+        _.some(allKnownCubes, (c) -> c.isEqualTo(cube))
+
+    nextGeneration: (currentGeneration, allKnownCubes) ->
+        nextGen = {}
+        for path, cube of currentGeneration
+            for move, change of moves when not this.haveSeen(newCube = change(cube), allKnownCubes)
+                key = "#{path}#{move}"
+                nextGen[key] = newCube
+        nextGen

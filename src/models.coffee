@@ -1,3 +1,4 @@
+"use strict"
 # Blue = 1, top, north against white
 # Orange = 2
 # White = 3
@@ -32,21 +33,14 @@ class Face
 class Cube
     constructor: (@blueFace, @orangeFace, @whiteFace, @redFace, 
             @yellowFace, @greenFace) ->
-    print: () ->
-        @blueFace.print + "\n\n" +
-        @orangeFace.print + "\n\n" + 
-        @whiteFace.print + "\n\n" + 
-        @redFace.print + "\n\n" +
-        @yellowFace.print + "\n\n" +
-        @greenFace.print
 
     isSolved: () ->
-        @blueFace.isSolved and
-        @orangeFace.isSolved and
-        @whiteFace.isSolved and
-        @redFace.isSolved and
-        @yellowFace.isSolved and
-        @greenFace.isSolved
+        @blueFace.isSolved() and
+        @orangeFace.isSolved() and
+        @whiteFace.isSolved() and
+        @redFace.isSolved() and
+        @yellowFace.isSolved() and
+        @greenFace.isSolved()
 
     isEqualTo: (other) ->
         @blueFace.isEqualTo(other.blueFace) and
